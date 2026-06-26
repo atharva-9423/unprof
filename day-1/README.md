@@ -44,11 +44,11 @@ git clone https://github.com/atharva-9423/unprof.git
 cd unprof/day-1
 
 # Open directly in your browser
-open profile_card.html      # macOS
-start profile_card.html      # Windows
+open profile-card.html      # macOS
+start profile-card.html      # Windows
 ```
 
-Or just double-click `profile_card.html` — no server needed.
+Or just double-click `profile-card.html` — no server needed.
 
 ---
 
@@ -69,7 +69,7 @@ Or just double-click `profile_card.html` — no server needed.
 
 ```
 day-1/
-├── profile_card.html      # Profile card markup + styles
+├── profile-card.html      # Profile card markup + styles
 └── README.md              # This file
 ```
 
