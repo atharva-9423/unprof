@@ -29,7 +29,7 @@ A static profile card UI built for the **Web Foundations** track, Day 1: HTML & 
 
 ## 🔗 Live Preview
 
-**[👉 View Live on Netlify](#)**
+**[👉 View Live on Netlify](https://atharva-profile-card.netlify.app/)**
 ---
 
 ## ⚙️ Installation & Setup
