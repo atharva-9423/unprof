@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atharva Phatangare — UnProf Worker Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+
+    /* ══════════════════════════════════════
+       CSS VARIABLES
+    ══════════════════════════════════════ */
+    :root {
+      --navy:        #0F172A;
+      --navy-mid:    #1E293B;
+      --navy-card:   #243044;
+      --orange:      #F97316;
+      --orange-dim:  #EA6A0A;
+      --white:       #FFFFFF;
+      --off-white:   #F8FAFC;
+      --muted:       #94A3B8;
+      --text:        #1E293B;
+      --text-light:  #475569;
+      --border:      #E2E8F0;
+      --radius-sm:   8px;
+      --radius-md:   14px;
+      --radius-lg:   20px;
+    }
+
+    /* ══════════════════════════════════════
+       RESET & BASE
+    ══════════════════════════════════════ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--off-white);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════
+       NAVIGATION BAR — Flexbox
+    ══════════════════════════════════════ */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--navy);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 2rem;
+      height: 64px;
+
+      /* Flexbox: logo left, links right */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar__logo {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .navbar__logo span {
+      color: var(--orange);
+    }
+
+    .navbar__links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .navbar__links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .navbar__links a:hover {
+      color: var(--white);
+    }
+
+    .navbar__links .nav-cta {
+      background: var(--orange);
+      color: var(--white);
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .navbar__links .nav-cta:hover {
+      background: var(--orange-dim);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    /* ══════════════════════════════════════
+       HERO SECTION — Flexbox + Clip-path
+    ══════════════════════════════════════ */
+    .hero {
+      background-color: var(--navy);
+      padding: 5rem 2rem 7rem;
+      /* Signature element: diagonal bottom edge */
+      clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+    }
+
+    .hero__inner {
+      max-width: 900px;
+      margin: 0 auto;
+
+      /* Flexbox: photo left, info right */
+      display: flex;
+      align-items: center;
+      gap: 3.5rem;
+    }
+
+    /* Profile Photo */
+    .hero__photo {
+      flex-shrink: 0;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: var(--navy-mid);
+      border: 4px solid var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero__photo svg {
+      width: 80px;
+      height: 80px;
+      color: var(--muted);
+    }
+
+    /* Info Block */
+    .hero__info {
+      flex: 1;
+    }
+
+    .hero__tag {
+      display: inline-block;
+      background: rgba(249, 115, 22, 0.15);
+      color: var(--orange);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero__name {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 2.4rem;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero__role {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero__location {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero__location svg {
+      width: 14px;
+      height: 14px;
+      color: var(--orange);
+      flex-shrink: 0;
+    }
+
+    /* Stats Row — Flexbox */
+    .hero__stats {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat__number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .stat__label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.2rem;
+    }
+
+    .stat__divider {
+      width: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* CTA */
+    .hero__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--orange);
+      color: var(--white);
+      padding: 0.75rem 1.8rem;
+      border-radius: var(--radius-sm);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .hero__cta:hover {
+      background: var(--orange-dim);
+      transform: translateY(-2px);
+    }
+
+    .hero__cta svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ══════════════════════════════════════
+       SECTION COMMON STYLES
+    ══════════════════════════════════════ */
+    .section {
+      padding: 5rem 2rem;
+    }
+
+    .section--dark {
+      background-color: var(--navy);
+    }
+
+    .section__inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section__eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.5rem;
+    }
+
+    .section__title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--text);
+      margin-bottom: 2rem;
+    }
+
+    .section--dark .section__title {
+      color: var(--white);
+    }
+
+    /* ══════════════════════════════════════
+       ABOUT SECTION — CSS Grid
+    ══════════════════════════════════════ */
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .about__text p {
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .about__text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about__highlights {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+
+    .highlight-item__icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: rgba(249, 115, 22, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .highlight-item__icon svg {
+      width: 18px;
+      height: 18px;
+      color: var(--orange);
+    }
+
+    .highlight-item__text strong {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .highlight-item__text span {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    /* ══════════════════════════════════════
+       SKILLS SECTION — CSS Grid
+    ══════════════════════════════════════ */
+    .skills__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .skill-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    .skill-card__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+
+    .skill-card__name {
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--text);
+    }
+
+    .skill-card__category {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    /* ══════════════════════════════════════
+       CONTACT SECTION — Flexbox
+    ══════════════════════════════════════ */
+    .contact {
+      background: var(--navy);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .contact__inner {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .contact__eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.6rem;
+    }
+
+    .contact__title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+
+    .contact__sub {
+      color: var(--muted);
+      font-size: 0.925rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Social Links — Flexbox */
+    .contact__links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--orange);
+      color: var(--white);
+      padding: 0.8rem 2rem;
+      border-radius: var(--radius-sm);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .contact__btn:hover {
+      background: var(--orange-dim);
+      transform: translateY(-2px);
+    }
+
+    .contact__btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .contact__btn--ghost {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+    }
+
+    .contact__btn--ghost:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    .footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+      padding: 1.5rem 2rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .footer span {
+      color: var(--orange);
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — Media Queries
+    ══════════════════════════════════════ */
+
+    /* Tablet */
+    @media (max-width: 768px) {
+      .skills__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero__name {
+        font-size: 1.9rem;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem 1.5rem;
+        gap: 0.8rem;
+      }
+
+      .navbar__links {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        clip-path: none;
+        padding: 3rem 1.5rem 4rem;
+      }
+
+      .hero__inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+
+      .hero__location {
+        justify-content: center;
+      }
+
+      .hero__stats {
+        justify-content: center;
+      }
+
+      .hero__cta {
+        align-self: center;
+      }
+
+      .skills__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 3rem 1.5rem;
+      }
+
+      .section__title {
+        font-size: 1.5rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION BAR ── -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a href="#" class="navbar__logo">Un<span>Prof</span></a>
+    <ul class="navbar__links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO SECTION ── -->
+  <header class="hero" id="home">
+    <div class="hero__inner">
+
+      <!-- Profile Photo Placeholder -->
+      <div class="hero__photo" aria-label="Profile photo placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </div>
+
+      <div class="hero__info">
+        <span class="hero__tag">UnProf Verified Worker</span>
+        <h1 class="hero__name">Atharva<br>Phatangare</h1>
+        <p class="hero__role">Python Developer & AI Enthusiast</p>
+        <div class="hero__location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          Pune, Maharashtra, India
+        </div>
+
+        <!-- Stats Row -->
+        <div class="hero__stats">
+          <div class="stat">
+            <span class="stat__number">7+</span>
+            <span class="stat__label">Days Learning</span>
+          </div>
+          <div class="stat__divider"></div>
+          <div class="stat">
+            <span class="stat__number">7</span>
+            <span class="stat__label">Projects Built</span>
+          </div>
+          <div class="stat__divider"></div>
+          <div class="stat">
+            <span class="stat__number">2</span>
+            <span class="stat__label">Internships</span>
+          </div>
+        </div>
+
+        <a href="#contact" class="hero__cta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── ABOUT SECTION ── -->
+  <section class="section" id="about">
+    <div class="section__inner">
+      <p class="section__eyebrow">About Me</p>
+      <h2 class="section__title">Who I Am</h2>
+
+      <div class="about__grid">
+        <div class="about__text">
+          <p>
+            I'm a passionate developer currently building expertise in Python
+            and Artificial Intelligence through hands-on internship projects at UnProf.
+            I enjoy turning ideas into clean, practical solutions.
+          </p>
+          <p>
+            From building OOP-based systems and REST API integrations to data analysis
+            dashboards, I've covered a wide range of Python concepts in a short time.
+            My ultimate goal is to master RAG (Retrieval Augmented Generation) and
+            build real-world AI-powered applications.
+          </p>
+        </div>
+
+        <div class="about__highlights">
+          <div class="highlight-item">
+            <div class="highlight-item__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <div class="highlight-item__text">
+              <strong>Currently Learning</strong>
+              <span>Python, AI, HTML & CSS</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-item__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="highlight-item__text">
+              <strong>Goal</strong>
+              <span>Build RAG-powered AI Applications</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-item__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div class="highlight-item__text">
+              <strong>Internship</strong>
+              <span>UnProf — Python/AI & Web Dev</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS SECTION ── -->
+  <section class="section" id="skills" style="background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="section__inner">
+      <p class="section__eyebrow">What I Know</p>
+      <h2 class="section__title">Skills</h2>
+
+      <div class="skills__grid">
+        <div class="skill-card">
+          <div class="skill-card__dot"></div>
+          <div>
+            <div class="skill-card__name">Python</div>
+            <div class="skill-card__category">Programming</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card__dot"></div>
+          <div>
+            <div class="skill-card__name">OOP</div>
+            <div class="skill-card__category">Programming</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card__dot"></div>
+          <div>
+            <div class="skill-card__name">File Handling & JSON</div>
+            <div class="skill-card__category">Python</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card__dot"></div>
+          <div>
+            <div class="skill-card__name">REST APIs</div>
+            <div class="skill-card__category">Python / requests</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card__dot"></div>
+          <div>
+            <div class="skill-card__name">Pandas & NumPy</div>
+            <div class="skill-card__category">Data Analysis</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card__dot"></div>
+          <div>
+            <div class="skill-card__name">Matplotlib</div>
+            <div class="skill-card__category">Data Visualization</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card__dot"></div>
+          <div>
+            <div class="skill-card__name">HTML & CSS</div>
+            <div class="skill-card__category">Web Development</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card__dot"></div>
+          <div>
+            <div class="skill-card__name">Regex</div>
+            <div class="skill-card__category">Text Processing</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card__dot"></div>
+          <div>
+            <div class="skill-card__name">RAG</div>
+            <div class="skill-card__category">AI — Learning</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT SECTION ── -->
+  <section class="contact" id="contact">
+    <div class="contact__inner">
+      <p class="contact__eyebrow">Get in Touch</p>
+      <h2 class="contact__title">Let's Connect</h2>
+      <p class="contact__sub">I'm always open to new opportunities, collaborations, and conversations.</p>
+      <div class="contact__links">
+        <a href="https://www.linkedin.com/in/atharva-phatangare" target="_blank" class="contact__btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/atharva-9423" target="_blank" class="contact__btn contact__btn--ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <p>Built with <span>♥</span> by Atharva Phatangare · UnProf Web Dev Internship · Day 2</p>
+  </footer>
+
+</body>
+</html>
