@@ -5,7 +5,7 @@
 A fully responsive profile page built with pure **HTML & CSS** — no frameworks, no libraries.
 An enhanced version of the Day 1 profile card, now a complete multi-section webpage.
 
-[![Live Preview](https://img.shields.io/badge/Live%20Preview-Visit%20Site-teal?style=for-the-badge&logo=netlify)](atharva-profile-page.netlify.app/)
+[![Live Preview](https://img.shields.io/badge/Live%20Preview-Visit%20Site-teal?style=for-the-badge&logo=netlify)](https://atharva-profile-page.netlify.app)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Atharva%20Phatangare-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/atharva-phatangare)
 [![GitHub](https://img.shields.io/badge/GitHub-atharva--9423-black?style=for-the-badge&logo=github)](https://github.com/atharva-9423)
 
@@ -15,7 +15,7 @@ An enhanced version of the Day 1 profile card, now a complete multi-section webp
 
 ## 🖼️ Preview
 
-> 📌 **[Click here to view the live demo →](atharva-profile-page.netlify.app/)**
+> 📌 **[Click here to view the live demo →](https://atharva-profile-page.netlify.app)**
 
 ---
 
