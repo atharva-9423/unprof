@@ -29,8 +29,7 @@
 
 ## 🔗 Live Preview
 
-**[👉 View Live on Netlify](#)**
-*(swap in your Netlify URL)*
+## **[👉 View Live Demo](https://student-manager-v1.netlify.app)**
 
 ---
 
