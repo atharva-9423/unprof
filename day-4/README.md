@@ -35,6 +35,14 @@ We didn't just meet the requirements; we wrapped them in a beautifully crafted, 
 
 <br/>
 
+---
+
+## 🔗 Live Preview
+
+## **[👉 View Live Demo](https://task-manager-v4.netlify.app/)**
+
+---
+
 ## 🚀 Key Features
 
 <table>
