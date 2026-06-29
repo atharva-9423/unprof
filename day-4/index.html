@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <aside class="sidebar">
+    <header>
+      <span class="eyebrow">Task Index</span>
+      <h1>To&#8211;Do</h1>
+      <div class="rule"></div>
+    </header>
+    <footer class="stats" id="stats"></footer>
+  </aside>
+
+  <div class="main">
+    <section class="form-section">
+      <form id="taskForm">
+        <label for="taskInput">Add an item</label>
+        <div class="input-row">
+          <input
+            type="text"
+            id="taskInput"
+            placeholder="What needs doing?"
+            autocomplete="off"
+          />
+          <button type="submit" class="btn-add">+ Add</button>
+        </div>
+        <p class="form-error" id="formError"></p>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <div class="list-head">
+        <nav class="filters" id="filters">
+          <button class="filter-btn active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="pending" type="button">Pending</button>
+          <button class="filter-btn" data-filter="completed" type="button">Done</button>
+        </nav>
+        <span class="count-tag" id="countTag">00</span>
+      </div>
+
+      <ol id="taskList"></ol>
+
+      <div class="empty-state" id="emptyState">
+        <p>Nothing on the list.</p>
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
