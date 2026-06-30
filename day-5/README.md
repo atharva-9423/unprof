@@ -96,7 +96,7 @@ App.jsx (owns the workers array)
 
 ## 🎨 The Look
 
-Dark editorial theme — near-black surface, a single neon-lime accent used for the eyebrow tag, profession text, and primary button. Avatar uses a conic-gradient ring (lime → violet) around a flat initials badge instead of a placeholder image. No background gradients — just a soft radial glow in the card corner.
+Dark editorial theme — near-black surface, a single neon-lime accent used, profession text, and primary button. Avatar uses a fade out eddect with a placeholder image. No background gradients — just a monochrome, typography ID card style design.
 
 ---
 
