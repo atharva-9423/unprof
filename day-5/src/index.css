@@ -1,0 +1,460 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white: #ffffff;
+  --off-white: #f5f5f0;
+  --black: #0a0a0a;
+  --gray-1: #1a1a1a;
+  --gray-2: #4a4a4a;
+  --gray-3: #8a8a8a;
+  --gray-4: #d4d4d0;
+  --gray-5: #ebebeb;
+  --accent: #84cc16;
+  --accent-dark: #5a8c0f;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #111111;
+  color: var(--black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ─── Page ─── */
+.page {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 24px 100px;
+}
+
+/* ─── Ribbon ─── */
+.lanyard-ribbon {
+  position: absolute;
+  top: 19px;
+  /* Perfectly lock the ribbon to the center of the screen to maintain alignment with the centered card */
+  left: calc(50% - 70px);
+  height: 230px;
+  /* Adjust size so it reaches the card */
+  z-index: -1;
+  /* Lowest z-index so it stays behind everything */
+  pointer-events: none;
+  transform-origin: top left;
+  /* Since it naturally slants outward to the left, we rotate it to slant inward to the right */
+  transform: rotate(0deg) translateX(-10%);
+}
+
+/* ─── Header ─── */
+.page-header {
+  width: 100%;
+  max-width: 880px;
+  margin-bottom: 64px;
+  border-top: 3px solid rgba(255, 255, 255, 0.15);
+  padding-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 16px;
+}
+
+.header-left {}
+
+.eyebrow {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 8px;
+}
+
+.page-header h1 {
+  font-size: clamp(42px, 6vw, 68px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  color: #ffffff;
+}
+
+.page-header h1 .accent-word {
+  color: var(--accent);
+}
+
+.header-right {
+  text-align: right;
+}
+
+.page-subtitle {
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 400;
+  max-width: 220px;
+  text-align: right;
+}
+
+/* ─── Grid ─── */
+.card-grid {
+  width: 100%;
+  max-width: 880px;
+  display: grid;
+  grid-template-columns: minmax(0, 420px);
+  justify-content: center;
+  gap: 2px;
+}
+
+/* ─── Card ─── */
+.card {
+  background: var(--white);
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  /* layer 1: #111 spread = gap between card and border */
+  /* layer 2: accent = the visible border */
+  box-shadow: 0 0 0 8px #111111, 0 0 0 10px var(--accent);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0 0 8px #111111, 0 0 0 13px var(--accent);
+}
+
+/* ─── Photo area ─── */
+.card-photo {
+  position: relative;
+  height: 340px;
+  background: var(--gray-1);
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  flex-shrink: 0;
+}
+
+.card-photo-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* gradient fade at bottom like the reference */
+.card-photo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--white));
+}
+
+/* Corner badges */
+.badge-top-left {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  background: var(--black);
+  color: var(--white);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 5px 9px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.badge-top-right {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--black);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: -0.01em;
+}
+
+.badge-star {
+  color: var(--accent);
+}
+
+/* ─── Avatar (initials) ─── */
+.avatar-ring {
+  border-radius: 50%;
+  overflow: hidden;
+  border: none;
+  flex-shrink: 0;
+}
+
+.avatar-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gray-1);
+}
+
+.avatar-initials {
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: var(--white);
+  line-height: 1;
+  user-select: none;
+}
+
+/* ─── Card body ─── */
+.card-body {
+  padding: 8px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* ─── Identity ─── */
+.card-identity {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--gray-5);
+}
+
+.card-name {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--black);
+  margin-bottom: 4px;
+}
+
+.card-profession {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--gray-3);
+  line-height: 1.5;
+}
+
+/* ─── Stats + Button row ─── */
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.card-stats {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+  gap: 0;
+}
+
+.stat-item {
+  padding-right: 20px;
+  border-right: 1px solid var(--gray-5);
+  margin-right: 20px;
+}
+
+.stat-item:last-child {
+  border-right: none;
+}
+
+.stat-label {
+  display: block;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray-3);
+  margin-bottom: 3px;
+}
+
+.stat-value {
+  display: block;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--black);
+  line-height: 1;
+}
+
+/* ─── Skills ─── */
+.card-skills-area {
+  margin-bottom: 20px;
+}
+
+.skills-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray-3);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.card-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-tag {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--gray-2);
+  background: var(--gray-5);
+  border: none;
+  padding: 5px 10px;
+  letter-spacing: 0.01em;
+  cursor: default;
+  transition: background 0.15s, color 0.15s;
+}
+
+.skill-tag:hover {
+  background: var(--accent);
+  color: var(--white);
+}
+
+/* ─── Connect Button ─── */
+.connect-btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  background: var(--black);
+  color: var(--white);
+  transition: background 0.2s ease, transform 0.1s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.connect-btn:hover {
+  background: var(--accent);
+  color: var(--black);
+}
+
+.connect-btn:active {
+  transform: scale(0.97);
+}
+
+.connect-btn--active {
+  background: var(--accent);
+  color: var(--black);
+}
+
+.connect-btn--active:hover {
+  background: var(--accent-dark);
+  color: var(--white);
+}
+
+.connect-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ─── Footer strip ─── */
+.page-footer {
+  width: 100%;
+  max-width: 880px;
+  margin-top: 64px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-accent {
+  width: 24px;
+  height: 3px;
+  background: var(--accent);
+}
+
+
+/* ─── Responsive ─── */
+@media (max-width: 520px) {
+  body {
+    height: auto;
+    overflow-y: auto;
+  }
+  
+  .page {
+    height: auto;
+    min-height: 100vh;
+    padding: 16px 20px 72px;
+  }
+
+  .page-header {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .header-right {
+    display: block;
+    text-align: left;
+    margin-top: 8px;
+  }
+
+  .page-subtitle {
+    text-align: left;
+    max-width: 100%;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-photo {
+    height: 260px;
+  }
+
+  .card-name {
+    font-size: 24px;
+  }
+}
