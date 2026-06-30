@@ -27,8 +27,8 @@
 
 ## 🔗 Live Preview
 
-**[👉 View Live on Netlify](#)**
-*(swap in your Netlify URL)*
+## **[👉 View Live on Netlify](https://unprof-profile.netlify.app/)**
+
 
 ---
 
