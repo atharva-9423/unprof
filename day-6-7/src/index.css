@@ -1,0 +1,246 @@
+/* ================================================================
+   TaskFlow — Swiss / International Typographic Style
+   Monochrome base · Helvetica · hairline grid · minimal
+   Accents (used sparingly as signal): red · blue · yellow
+   ================================================================ */
+:root {
+  --paper: #F3F3F1;   /* warm off-white */
+  --ink:   #111111;
+  --grey:  #8C8C8C;
+  --line:  #111111;
+
+  /* the only three accents — deployed minimally */
+  --red:    #E1261C;
+  --blue:   #1E4FFF;
+  --yellow: #FFC400;
+
+  --hair: 1px solid var(--line);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI", system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 56px 20px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app { width: 100%; max-width: 620px; }
+
+/* ============ header — strong type ============ */
+.app__header {
+  border-top: 4px solid var(--ink);   /* Swiss thick top rule */
+  padding-top: 18px;
+  margin-bottom: 0;
+}
+.app__title {
+  font-size: clamp(3rem, 13vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+.app__title mark {          /* the one inline accent in the wordmark */
+  background: none;
+  color: var(--red);
+}
+.app__subtitle {
+  margin-top: 16px;
+  padding-bottom: 18px;
+  border-bottom: var(--hair);
+  color: var(--grey);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+}
+
+/* ============ card = grid container, no shadow, sharp ============ */
+.app__card {
+  border: var(--hair);
+  border-top: none;
+  background: transparent;
+  padding: 28px 26px 30px;
+}
+
+.app__footer {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: var(--hair);
+  color: var(--grey);
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  text-align: left;
+}
+
+/* ============ form ============ */
+.task-form { display: flex; gap: 0; margin-bottom: 34px; border: var(--hair); }
+.task-form__input {
+  flex: 1;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 15px 16px;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  outline: none;
+}
+.task-form__input::placeholder { color: var(--grey); }
+.task-form__btn {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 0 24px;
+  border: none;
+  border-left: var(--hair);
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.task-form__btn:hover { background: var(--blue); }
+
+/* ============ stats — three columns, numbered, accent rules ============ */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: var(--hair);
+  margin-bottom: 34px;
+}
+.stats__item {
+  position: relative;
+  padding: 22px 16px 18px;
+  counter-increment: stat;
+}
+.stats__item + .stats__item { border-left: var(--hair); }
+/* Swiss index number 01 / 02 / 03 */
+.stats__item::before {
+  content: "0" counter(stat);
+  position: absolute;
+  top: 10px; right: 12px;
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: var(--grey);
+  letter-spacing: 0.1em;
+}
+/* thin accent bar per column — the "multiple accents" */
+.stats__item::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+.stats__item--total::after   { background: var(--red); }
+.stats__item--done::after    { background: var(--blue); }
+.stats__item--pending::after { background: var(--yellow); }
+
+.stats__num { display: block; font-size: 2.4rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+.stats__label {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--grey);
+}
+
+/* ============ filters — minimal text, underline active ============ */
+.filters {
+  display: flex;
+  gap: 26px;
+  margin-bottom: 8px;
+  padding-bottom: 14px;
+  border-bottom: var(--hair);
+}
+.filters__btn {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 4px 0;
+  border: none;
+  background: none;
+  color: var(--grey);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.15s;
+}
+.filters__btn:hover { color: var(--ink); }
+.filters__btn--active { color: var(--ink); }
+.filters__btn--active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -15px;
+  height: 3px;
+  background: var(--ink);
+}
+
+/* ============ task list — hairline rows ============ */
+.tasklist { list-style: none; }
+.tasklist__empty {
+  padding: 40px 0 24px;
+  color: var(--grey);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 4px;
+  border-bottom: var(--hair);
+  transition: padding-left 0.15s;
+}
+.task:hover { padding-left: 12px; }
+.task__main { display: flex; align-items: center; gap: 14px; flex: 1; cursor: pointer; }
+.task__check {
+  width: 18px; height: 18px;
+  accent-color: var(--blue);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.task__title { font-size: 1rem; font-weight: 500; word-break: break-word; }
+
+.task--done .task__title {
+  text-decoration: line-through;
+  text-decoration-color: var(--red);
+  color: var(--grey);
+}
+
+.task__delete {
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 400;
+  width: 26px; height: 26px;
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  color: var(--grey);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.task__delete:hover { color: var(--red); }
+
+/* ============ responsive ============ */
+@media (max-width: 480px) {
+  body { padding: 32px 14px; }
+  .task-form { flex-direction: column; }
+  .task-form__btn { border-left: none; border-top: var(--hair); padding: 14px; }
+  .stats { grid-template-columns: 1fr; }
+  .stats__item + .stats__item { border-left: none; border-top: var(--hair); }
+  .filters { gap: 18px; }
+}
